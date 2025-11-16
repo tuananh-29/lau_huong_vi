@@ -1,0 +1,119 @@
+<?php
+// Bắt đầu session
+session_start();
+
+// Nếu đã đăng nhập, chuyển về trang chủ
+if (isset($_SESSION['user_id'])) {
+    header("Location: ../index.php"); // Chuyển về index.php ở gốc
+    exit();
+}
+
+include '../config/db.php';
+$message = '';
+
+// KIỂM TRA FORM SUBMIT
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+
+    // --- 1. KIỂM TRA CAPTCHA TRƯỚC ---
+    if (!isset($_POST['captcha']) || strtolower($_POST['captcha']) != strtolower($_SESSION['captcha_code'])) {
+        $message = '<div class="message error">Mã Captcha không chính xác!</div>';
+    } else {
+        
+        // --- 2. CAPTCHA ĐÚNG -> TIẾP TỤC XỬ LÝ ĐĂNG NHẬP ---
+        // (Đây là code login của bạn, đã được di chuyển vào đây)
+        
+        $email = mysqli_real_escape_string($conn, $_POST['email']);
+        $password_input = $_POST['password'];
+
+        // --- KIỂM TRA NGƯỜI DÙNG ---
+        $sql = "SELECT ma_nguoi_dung, ho_ten, mat_khau, vai_tro FROM nguoi_dung WHERE email = ?";
+        $stmt = $conn->prepare($sql);
+        $stmt->bind_param("s", $email);
+        $stmt->execute();
+        $result = $stmt->get_result();
+
+        if ($result->num_rows == 1) {
+            $user = $result->fetch_assoc();
+            
+            // --- XÁC MINH MẬT KHẨU ---
+            if (password_verify($password_input, $user['mat_khau'])) {
+                // Mật khẩu chính xác!
+                $_SESSION['user_id'] = $user['ma_nguoi_dung'];
+                $_SESSION['full_name'] = $user['ho_ten'];
+                $_SESSION['role'] = $user['vai_tro'];
+                
+                // Chuyển hướng về trang chủ ở gốc
+                header("Location: ../index.php");
+                exit();
+                
+            } else {
+                $message = '<div class="message error">Sai email hoặc mật khẩu!</div>';
+            }
+        } else {
+            $message = '<div class="message error">Sai email hoặc mật khẩu!</div>';
+        }
+        $stmt->close();
+        $conn->close();
+    } // Đóng khối 'else' của Captcha
+}
+?>
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Đăng Nhập - Lẩu Hương Vị</title>
+    <link rel="stylesheet" href="../css/auth.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+</head>
+<body class="auth-body">
+
+    <div class="auth-container">
+        
+        <section class="auth-form-section">
+            <h1>ĐĂNG NHẬP</h1>
+            
+            <?php echo $message; ?>
+
+            <form method="POST" action="login.php">
+                <div class="auth-form-group">
+                    <div class="auth-input-wrapper">
+                        <i class="fas fa-envelope"></i>
+                        <input type="email" id="email" name="email" class="auth-input" placeholder="Email" required>
+                    </div>
+                </div>
+                
+                <div class="auth-form-group">
+                    <div class="auth-input-wrapper">
+                        <i class="fas fa-lock"></i>
+                        <input type="password" id="password" name="password" class="auth-input" placeholder="Mật khẩu" required>
+                    </div>
+                </div>
+
+                <div class="auth-form-group">
+                    <div class="captcha-group">
+                        <input type="text" id="captcha" name="captcha" class="auth-input" placeholder="Captcha" required>
+                        <img src="captcha_image.php" alt="Captcha" 
+                             onclick="this.src='captcha_image.php?' + new Date().getTime()">
+                    </div>
+                </div>
+                
+                <a href="#" class="auth-link">Quên mật khẩu của bạn?</a>
+                
+                <button type="submit" class="auth-button">ĐĂNG NHẬP</button>
+            </form>
+        </section>
+
+        <aside class="auth-sidebar">
+            <div class="logo">
+                <img src="../images/logo.png" alt="Royal TheDreamers Restaurant">
+            </div>
+            <h2>Bạn chưa có tài khoản tại Lẩu Hương Vị</h2>
+            <p>Đừng lo, tạo mới một tài khoản và bắt đầu trải nghiệm của bạn với nhà hàng chúng tôi</p>
+            <a href="register.php" class="cta-button-outline">Đăng ký >></a>
+        </aside>
+
+    </div>
+
+</body>
+</html>

@@ -1,0 +1,226 @@
+/* ==================================== */
+/* CSS cho trang Đăng Nhập / Đăng Ký mới */
+/* ==================================== */
+:root {
+    --auth-brand-color: #C06A4F; /* Màu tím/tím than từ ảnh */
+    --auth-brand-dark: #C06A4F; /* Màu sidebar tối */
+    --auth-text-light: #fdfdfd;
+    --auth-text-dark: #333;
+    --auth-background-light: #ffffff;
+    --auth-background-grey: #f4f4f7;
+    --auth-input-bg: #f0f0f5;
+    --auth-border-color: #ddd;
+}
+
+.auth-body {
+    font-family: Arial, sans-serif;
+    background-color: var(--auth-background-grey);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 20px;
+}
+
+.auth-container {
+    display: flex;
+    width: 100%;
+    max-width: 1000px;
+    min-height: 600px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+/* ================== */
+/* PHẦN SIDEBAR (CỘT BÊN) */
+/* ================== */
+.auth-sidebar {
+    flex: 1;
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    background-color: var(--auth-brand-dark);
+    color: var(--auth-text-light);
+}
+
+.auth-sidebar .logo {
+    width: 150px;
+    height: 150px;
+    background-color: #fff;
+    border-radius: 50%;
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.auth-sidebar .logo img {
+    width: 90%;
+    object-fit: contain;
+}
+
+.auth-sidebar h2 {
+    font-size: 28px;
+    margin-bottom: 10px;
+}
+
+.auth-sidebar p {
+    font-size: 16px;
+    margin-bottom: 30px;
+    line-height: 1.5;
+}
+
+.cta-button-outline {
+    background-color: transparent;
+    border: 2px solid var(--auth-text-light);
+    color: var(--auth-text-light);
+    padding: 12px 30px;
+    border-radius: 30px;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 16px;
+    transition: all 0.3s ease;
+}
+
+.cta-button-outline:hover {
+    background-color: var(--auth-text-light);
+    color: var(--auth-brand-dark);
+}
+
+/* ================== */
+/* PHẦN FORM (CỘT CHÍNH) */
+/* ================== */
+.auth-form-section {
+    flex: 1.2;
+    padding: 50px 60px;
+    background-color: var(--auth-background-light);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.auth-form-section h1 {
+    font-size: 32px;
+    font-weight: bold;
+    color: var(--auth-text-dark);
+    margin-bottom: 30px;
+    text-align: left;
+}
+
+/* Ghi đè form-group cũ */
+.auth-form-group {
+    margin-bottom: 20px;
+}
+
+.auth-input-wrapper {
+    position: relative;
+}
+
+.auth-input-wrapper i {
+    position: absolute;
+    top: 50%;
+    left: 15px;
+    transform: translateY(-50%);
+    color: #888;
+}
+
+.auth-input {
+    width: 100%;
+    padding: 15px 10px 15px 45px; /* Thêm padding trái cho icon */
+    border: none;
+    background-color: var(--auth-input-bg);
+    border-radius: 8px;
+    font-size: 16px;
+    border: 2px solid transparent;
+    transition: border-color 0.3s ease;
+}
+
+.auth-input:focus {
+    outline: none;
+    border-color: var(--auth-brand-color);
+    background-color: var(--auth-background-light);
+}
+
+.auth-link {
+    display: block;
+    text-align: right;
+    margin-top: -10px;
+    margin-bottom: 20px;
+    color: var(--auth-brand-color);
+    text-decoration: none;
+    font-size: 14px;
+}
+
+.auth-link:hover {
+    text-decoration: underline;
+}
+
+.auth-button {
+    width: 100%;
+    padding: 15px;
+    border: none;
+    border-radius: 8px;
+    background-color: var(--auth-brand-color);
+    color: var(--auth-text-light);
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.auth-button:hover {
+    background-color: #6a41a3;
+}
+
+/* CSS cho Captcha */
+.captcha-group {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+.captcha-group input {
+    width: 150px;
+    padding-left: 20px !important;
+}
+.captcha-group img {
+    border: 1px solid var(--auth-border-color);
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+/* Link đăng nhập/ký ở cuối */
+.auth-switch-link {
+    text-align: center;
+    margin-top: 20px;
+    font-size: 15px;
+}
+.auth-switch-link a {
+    color: var(--auth-brand-color);
+    font-weight: bold;
+    text-decoration: none;
+}
+.auth-switch-link a:hover {
+    text-decoration: underline;
+}
+
+/* Ghi đè thông báo lỗi/thành công */
+.message {
+    padding: 15px;
+    margin-bottom: 20px;
+    border-radius: 5px;
+    font-weight: bold;
+}
+.message.success {
+    background-color: #e0f8e0;
+    border: 1px solid #b0d0b0;
+    color: #388e3c;
+}
+.message.error {
+    background-color: #f8e0e0;
+    border: 1px solid #d0b0b0;
+    color: #c9302c;
+}

@@ -1,0 +1,27 @@
+# Bật công cụ Rewrite
+RewriteEngine On
+
+# ----------------------------------------------------
+# BẢO MẬT
+# ----------------------------------------------------
+
+# Chặn truy cập trực tiếp vào file config
+<Files config/db.php>
+    Order allow,deny
+    Deny from all
+</Files>
+
+# Chặn duyệt thư mục
+Options -Indexes
+
+# ----------------------------------------------------
+# LÀM ĐẸP URL (Xóa đuôi .php)
+# ----------------------------------------------------
+
+# Điều kiện 1: Đảm bảo file có tồn tại
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+
+# Điều kiện 2: Biến "menu" thành "menu.php"
+RewriteCond %{REQUEST_FILENAME}.php -f
+RewriteRule ^(.+)$ $1.php [L,QSA]
