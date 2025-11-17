@@ -7,13 +7,9 @@
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-
     <?php 
-        // Nhúng phần đầu trang (header) vào đây
         include 'php/header.php'; 
     ?>
-
-    <!-- ==================== MAIN ==================== -->
     <main>
         <section class="about-us" style="background-color: var(--color-white); min-height: 60vh;">
             <div class="container">
@@ -23,12 +19,9 @@
             </div>
         </section>
     </main>
-
     <?php 
-        // Nhúng phần chân trang (footer) vào đây
         include 'php/footer.php'; 
     ?>
-
     <script src="js/script.js"></script>
 </body>
 </html>

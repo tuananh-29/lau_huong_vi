@@ -1,6 +1,4 @@
 <?php
-// Lưu tại: /admin/includes/sidebar.php
-// Lấy tên file hiện tại để active menu
 $current_page = basename($_SERVER['SCRIPT_NAME']);
 ?>
 <aside class="sidebar">
@@ -16,8 +14,6 @@ $current_page = basename($_SERVER['SCRIPT_NAME']);
             </li>
             
             <li><hr style="border-color: #34495e;"></li>
-
-            <!-- Các link chức năng bạn yêu cầu -->
             <li>
                 <a href="manage_orders.php" class="<?php echo ($current_page == 'manage_orders.php') ? 'active' : ''; ?>">
                     <i class="fas fa-file-invoice"></i> Thống kê Hóa Đơn

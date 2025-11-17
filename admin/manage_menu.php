@@ -1,25 +1,21 @@
 <?php
-// Lưu tại: /admin/manage_menu.php
-include 'admin_auth.php'; // 1. BẢO VỆ
-include '../config/db.php'; // 2. KẾT NỐI DB
+include 'admin_auth.php';
+include '../config/db.php';
 
 $message = '';
 $edit_mode = false;
 $edit_product = null;
 
-// --- XỬ LÝ THÊM HOẶC CẬP NHẬT SẢN PHẨM ---
 if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['save_product'])) {
-    
     $ten_mon_an = mysqli_real_escape_string($conn, $_POST['ten_mon_an']);
-    $ma_danh_muc = (int)$_POST['ma_danh_muc']; // Giả sử bạn có bảng danh_muc
+    $ma_danh_muc = (int)$_POST['ma_danh_muc'];
     $mo_ta = mysqli_real_escape_string($conn, $_POST['mo_ta']);
     $gia = (int)$_POST['gia'];
     $trang_thai = mysqli_real_escape_string($conn, $_POST['trang_thai']);
-    $anh = mysqli_real_escape_string($conn, $_POST['anh']); // Tạm thời nhập link ảnh
+    $anh = mysqli_real_escape_string($conn, $_POST['anh']);
     $ma_mon_an_edit = (int)$_POST['ma_mon_an_edit'];
     
     if ($ma_mon_an_edit > 0) {
-        // --- CHẾ ĐỘ CẬP NHẬT ---
         $sql = "UPDATE mon_an SET ten_mon_an = ?, ma_danh_muc = ?, mo_ta = ?, gia = ?, anh = ?, trang_thai = ? WHERE ma_mon_an = ?";
         $stmt = $conn->prepare($sql);
         $stmt->bind_param("sisissi", $ten_mon_an, $ma_danh_muc, $mo_ta, $gia, $anh, $trang_thai, $ma_mon_an_edit);
@@ -29,7 +25,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['save_product'])) {
             $message = '<div class="message error">Lỗi: ' . $conn->error . '</div>';
         }
     } else {
-        // --- CHẾ ĐỘ THÊM MỚI ---
         $sql = "INSERT INTO mon_an (ten_mon_an, ma_danh_muc, mo_ta, gia, anh, trang_thai) VALUES (?, ?, ?, ?, ?, ?)";
         $stmt = $conn->prepare($sql);
         $stmt->bind_param("sisiss", $ten_mon_an, $ma_danh_muc, $mo_ta, $gia, $anh, $trang_thai);
@@ -42,7 +37,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['save_product'])) {
     $stmt->close();
 }
 
-// --- XỬ LÝ XÓA SẢN PHẨM ---
 if (isset($_GET['delete'])) {
     $delete_id = (int)$_GET['delete'];
     if ($delete_id > 0) {
@@ -58,7 +52,6 @@ if (isset($_GET['delete'])) {
     }
 }
 
-// --- LẤY DỮ LIỆU ĐỂ SỬA ---
 if (isset($_GET['edit'])) {
     $edit_id = (int)$_GET['edit'];
     if ($edit_id > 0) {
@@ -75,7 +68,6 @@ if (isset($_GET['edit'])) {
     }
 }
 
-// --- LẤY TẤT CẢ MÓN ĂN ĐỂ HIỂN THỊ ---
 $result_products = $conn->query("SELECT * FROM mon_an ORDER BY ma_mon_an DESC");
 
 ?>
@@ -100,11 +92,9 @@ $result_products = $conn->query("SELECT * FROM mon_an ORDER BY ma_mon_an DESC");
             
             <?php echo $message; ?>
 
-            <!-- FORM THÊM/SỬA MÓN ĂN -->
             <div class="content-box">
                 <h2><?php echo $edit_mode ? 'Sửa Món Ăn' : 'Thêm Món Ăn Mới'; ?></h2>
                 <form method="POST" action="manage_menu.php">
-                    <!-- Trường ẩn để biết đang sửa món nào -->
                     <input type="hidden" name="ma_mon_an_edit" value="<?php echo $edit_mode ? $edit_product['ma_mon_an'] : '0'; ?>">
                     
                     <div class="form-container">
@@ -115,7 +105,6 @@ $result_products = $conn->query("SELECT * FROM mon_an ORDER BY ma_mon_an DESC");
                         </div>
                         <div class="form-group">
                             <label for="ma_danh_muc">Danh Mục</label>
-                            <!-- (Bạn cần code PHP để lặp qua bảng danh_muc và tạo <option>) -->
                             <input type="number" id="ma_danh_muc" name="ma_danh_muc" class="form-input" 
                                    value="<?php echo $edit_mode ? $edit_product['ma_danh_muc'] : '1'; ?>" required>
                         </div>
@@ -126,7 +115,6 @@ $result_products = $conn->query("SELECT * FROM mon_an ORDER BY ma_mon_an DESC");
                         </div>
                         <div class="form-group" style="grid-column: 1 / span 2;">
                             <label for="anh">Link Hình Ảnh</label>
-                            <!-- (Để làm upload file thật sự cần code phức tạp hơn) -->
                             <input type="text" id="anh" name="anh" class="form-input" 
                                    value="<?php echo $edit_mode ? htmlspecialchars($edit_product['anh']) : ''; ?>">
                         </div>
@@ -152,7 +140,6 @@ $result_products = $conn->query("SELECT * FROM mon_an ORDER BY ma_mon_an DESC");
                 </form>
             </div>
 
-            <!-- BẢNG LIỆT KÊ MÓN ĂN -->
             <div class="content-box">
                 <h2>Danh Sách Món Ăn</h2>
                 <table class="data-table">

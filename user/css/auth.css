@@ -1,9 +1,6 @@
-/* ==================================== */
-/* CSS cho trang Đăng Nhập / Đăng Ký mới */
-/* ==================================== */
 :root {
-    --auth-brand-color: #C06A4F; /* Màu tím/tím than từ ảnh */
-    --auth-brand-dark: #C06A4F; /* Màu sidebar tối */
+    --auth-brand-color: #C06A4F;
+    --auth-brand-dark: #C06A4F;
     --auth-text-light: #fdfdfd;
     --auth-text-dark: #333;
     --auth-background-light: #ffffff;
@@ -32,9 +29,6 @@
     overflow: hidden;
 }
 
-/* ================== */
-/* PHẦN SIDEBAR (CỘT BÊN) */
-/* ================== */
 .auth-sidebar {
     flex: 1;
     padding: 40px;
@@ -91,9 +85,6 @@
     color: var(--auth-brand-dark);
 }
 
-/* ================== */
-/* PHẦN FORM (CỘT CHÍNH) */
-/* ================== */
 .auth-form-section {
     flex: 1.2;
     padding: 50px 60px;
@@ -111,7 +102,6 @@
     text-align: left;
 }
 
-/* Ghi đè form-group cũ */
 .auth-form-group {
     margin-bottom: 20px;
 }
@@ -130,7 +120,7 @@
 
 .auth-input {
     width: 100%;
-    padding: 15px 10px 15px 45px; /* Thêm padding trái cho icon */
+    padding: 15px 10px 15px 45px;
     border: none;
     background-color: var(--auth-input-bg);
     border-radius: 8px;
@@ -176,49 +166,52 @@
     background-color: #6a41a3;
 }
 
-/* CSS cho Captcha */
 .captcha-group {
     display: flex;
     gap: 10px;
     align-items: center;
 }
+
 .captcha-group input {
     width: 150px;
     padding-left: 20px !important;
 }
+
 .captcha-group img {
     border: 1px solid var(--auth-border-color);
     border-radius: 5px;
     cursor: pointer;
 }
 
-/* Link đăng nhập/ký ở cuối */
 .auth-switch-link {
     text-align: center;
     margin-top: 20px;
     font-size: 15px;
 }
+
 .auth-switch-link a {
     color: var(--auth-brand-color);
     font-weight: bold;
     text-decoration: none;
 }
+
 .auth-switch-link a:hover {
     text-decoration: underline;
 }
 
-/* Ghi đè thông báo lỗi/thành công */
 .message {
     padding: 15px;
     margin-bottom: 20px;
     border-radius: 5px;
     font-weight: bold;
 }
+
 .message.success {
     background-color: #e0f8e0;
     border: 1px solid #b0d0b0;
     color: #388e3c;
 }
+
 .message.error {
     background-color: #f8e0e0;
     border: 1px solid #d0b0b0;

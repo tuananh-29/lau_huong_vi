@@ -2,7 +2,6 @@
 session_start();
 include '../config/db.php';
 $message = '';
-
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if (!isset($_POST['captcha']) || strtolower($_POST['captcha']) != strtolower($_SESSION['captcha_code'])) {
         $message = '<div class="message error">Mã Captcha không chính xác!</div>';
@@ -16,7 +15,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $stmt_check->bind_param("s", $email);
         $stmt_check->execute();
         $stmt_check->store_result();
-
         if ($stmt_check->num_rows > 0) {
             $message = '<div class="message error">Email này đã được sử dụng!</div>';
         } else {

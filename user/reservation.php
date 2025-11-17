@@ -4,7 +4,7 @@ if (!isset($_SESSION['user_id'])) {
     header("Location: login.php");
     exit(); 
 }
-include 'config/db.php';
+include '../config/db.php';
 $message = '';
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if (!isset($_POST['captcha']) || strtolower($_POST['captcha']) != strtolower($_SESSION['captcha_code'])) {

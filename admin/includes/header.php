@@ -1,6 +1,4 @@
 <?php
-// Lưu tại: /admin/includes/header.php
-// File này đã giả định admin_auth.php đã được include
 ?>
 <header class="header">
     <div class="user-info">

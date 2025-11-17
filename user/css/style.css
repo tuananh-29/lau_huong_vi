@@ -1,12 +1,10 @@
-/* ==================== CÀI ĐẶT CHUNG & BIẾN MÀU ==================== */
 :root {
-    --color-primary: #C06A4F; /* Cam Đất */
-    --color-cream: #F7F3E8;   /* Vàng Kem (Nền) */
-    --color-charcoal: #3D3532; /* Xám Đen (Chữ) */
+    --color-primary: #C06A4F;
+    --color-cream: #F7F3E8;  
+    --color-charcoal: #3D3532;
     --color-white: #FFFFFF;
 }
 
-/* Reset mặc định */
 * {
     margin: 0;
     padding: 0;
@@ -15,28 +13,22 @@
 
 body {
     font-family: Arial, sans-serif;
-    background-color: var(--color-cream); /* Nền vàng kem */
-    color: var(--color-charcoal); /* Chữ xám đen */
+    background-color: var(--color-cream);
+    color: var(--color-charcoal);
     line-height: 1.6;
-    /* Đảm bảo footer luôn ở cuối nếu nội dung ngắn */
     display: flex;
     flex-direction: column;
     min-height: 100vh;
 }
-
-/* Đẩy main content xuống */
 main {
     flex-grow: 1;
 }
-
-/* Lớp "container" để căn giữa nội dung */
 .container {
     max-width: 1200px;
     margin: 0 auto;
     padding: 0 20px;
 }
 
-/* ==================== HEADER (ĐẦU TRANG) ==================== */
 .header {
     width: 100%;
     background-color: var(--color-white);
@@ -88,7 +80,6 @@ main {
     background-color: #a85a41;
 }
 
-/* ==================== BANNER DI CHUYỂN ==================== */
 .banner {
     width: 100%;
 }
@@ -131,7 +122,6 @@ main {
 #prevBtn { left: 10px; }
 #nextBtn { right: 10px; }
 
-/* ==================== CÁC MỤC NỘI DUNG ==================== */
 section {
     padding: 60px 0;
 }
@@ -143,10 +133,9 @@ h2 {
     margin-bottom: 40px;
 }
 
-/* Mục thực đơn */
 .menu-grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr); /* Chia 3 cột */
+    grid-template-columns: repeat(3, 1fr);
     gap: 30px;
 }
 
@@ -181,20 +170,17 @@ h2 {
     padding: 0 15px 20px 15px;
 }
 
-/* CSS cho link món ăn */
 .menu-item a {
     text-decoration: none;
 }
 .menu-item a h3 {
-     color: var(--color-charcoal);
-     transition: color 0.3s;
+    color: var(--color-charcoal);
+    transition: color 0.3s;
 }
 .menu-item a:hover h3 {
     color: var(--color-primary);
 }
 
-
-/* Mục Giới thiệu (Trang chủ) */
 .about-us {
     background-color: var(--color-white);
 }
@@ -206,7 +192,6 @@ h2 {
     font-size: 18px;
 }
 
-/* Trang Menu: Thanh Tìm Kiếm */
 .search-bar {
     text-align: center;
     margin-bottom: 40px;
@@ -224,7 +209,6 @@ h2 {
     border-color: var(--color-primary);
 }
 
-/* ==================== CSS CHO TRANG ĐĂNG KÝ/ĐĂNG NHẬP ==================== */
 .auth-page {
     background-color: var(--color-white);
     min-height: 70vh;
@@ -267,37 +251,30 @@ h2 {
     font-size: 16px;
     border: 1px solid #ddd;
     border-radius: 5px;
-    box-sizing: border-box; /* Quan trọng */
-    /* Thêm hiệu ứng chuyển động mượt */
+    box-sizing: border-box;
     transition: border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
-/* Thêm khối CSS mới này */
 .form-input:focus {
-    outline: none; /* Bỏ viền xanh (hoặc cam) mặc định của trình duyệt */
-    border-color: var(--color-primary); /* Đổi màu viền sang màu Cam Đất */
-    box-shadow: 0 0 5px rgba(192, 106, 79, 0.5); /* Thêm hiệu ứng "phát sáng" */
+    outline: none;
+    border-color: var(--color-primary);
+    box-shadow: 0 0 5px rgba(192, 106, 79, 0.5);
 }
 
-
-/* Thêm CSS cho input date/time/number */
 .form-input[type="date"],
 .form-input[type="time"],
 .form-input[type="number"] {
-    /* Đảm bảo chúng hiển thị đúng trên iOS */
     -webkit-appearance: none;
     -moz-appearance: none;
     appearance: none;
 }
 
-/* Bố cục 2 cột cho ngày và giờ */
 .form-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 15px;
 }
 
-/* CSS cho Textarea (Ghi chú) */
 .form-textarea {
     width: 100%;
     padding: 12px 15px;
@@ -307,7 +284,7 @@ h2 {
     box-sizing: border-box;
     font-family: Arial, sans-serif;
     min-height: 100px;
-    resize: vertical; /* Cho phép kéo dãn theo chiều dọc */
+    resize: vertical;
 }
 
 .form-button {
@@ -317,7 +294,6 @@ h2 {
     border: none;
 }
 
-/* Thông báo lỗi và thành công */
 .message {
     padding: 15px;
     margin-bottom: 20px;
@@ -335,8 +311,6 @@ h2 {
     color: #c9302c;
 }
 
-
-/* ==================== CSS CHO HEADER (Cập nhật) ==================== */
 .header-action {
     display: flex;
     align-items: center;
@@ -345,7 +319,7 @@ h2 {
 
 .welcome-user {
     font-weight: bold;
-    white-space: nowrap; /* Tránh xuống dòng */
+    white-space: nowrap;
 }
 
 .cta-button-secondary {
@@ -364,14 +338,12 @@ h2 {
     color: var(--color-white);
 }
 
-
-/* ==================== FOOTER (CHÂN TRANG) ==================== */
 .footer {
     width: 100%;
     background-color: var(--color-charcoal);
     color: var(--color-cream);
     padding: 50px 0 20px 0;
-    margin-top: auto; /* Đẩy footer xuống cuối */
+    margin-top: auto;
 }
 
 .footer-content {
@@ -398,97 +370,83 @@ h2 {
     padding-top: 20px;
     font-size: 14px;
 }
-/* ==================== CSS CHO HEADER (Bổ sung) ==================== */
 
-/* Sửa lại .header-action để chứa nhiều mục hơn */
 .header-action {
     display: flex;
     align-items: center;
-    gap: 15px; /* Tạo khoảng cách giữa các mục */
+    gap: 15px;
 }
 
-/* Định dạng cho link icon profile mới */
 .profile-link {
     text-decoration: none;
-    font-size: 24px; /* Kích thước icon */
+    font-size: 24px;
     color: var(--color-charcoal);
     transition: color 0.3s ease;
 }
 
 .profile-link:hover {
-    color: var(--color-primary); /* Đổi màu khi hover */
+    color: var(--color-primary);
 }
 
 .welcome-user {
     font-weight: bold;
-    white-space: nowrap; /* Tránh xuống dòng */
+    white-space: nowrap;
 }
-/* ==================================== */
-/* NÂNG CẤP TRANG PROFILE (PHONG CÁCH MỚI) */
-/* ==================================== */
 
-/* Ghi đè lại .auth-page để có nền xám */
 .auth-page {
-    background-color: #f2f2f2; /* Nền xám nhạt giống ảnh */
-    padding: 40px 0; /* Thêm khoảng cách trên dưới */
+    background-color: #f2f2f2;
+    padding: 40px 0;
 }
 
-/* Container 2 cột mới */
 .profile-page-container {
     display: flex;
-    flex-wrap: wrap; /* Cho phép xuống dòng trên mobile */
+    flex-wrap: wrap;
     gap: 30px;
     max-width: 1200px;
     margin: 0 auto;
 }
 
-/* Style cho mỗi cột (Thông tin & Mật khẩu) */
 .profile-column {
-    flex: 1; /* Hai cột bằng nhau */
-    min-width: 300px; /* Chiều rộng tối thiểu trước khi xuống dòng */
-    background-color: var(--color-white); /* Nền trắng */
-    border-radius: 8px; /* Bo góc */
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05); /* Đổ bóng nhẹ */
-    border: 1px solid #eee; /* Viền mờ */
-    overflow: hidden; /* Để bo góc hoạt động với h2 */
+    flex: 1;
+    min-width: 300px;
+    background-color: var(--color-white);
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    border: 1px solid #eee;
+    overflow: hidden;
 }
 
-/* Tiêu đề <h2> bên trong cột */
 .profile-column h2 {
-    /* Tách h2 ra khỏi form */
     padding: 20px 30px;
     margin: 0;
-    border-bottom: 1px solid #eee; /* Viền chân h2 */
-    color: var(--color-primary); /* Màu cam chủ đạo */
+    border-bottom: 1px solid #eee;
+    color: var(--color-primary);
     font-size: 20px;
-    text-align: left; /* Căn trái thay vì căn giữa */
-    margin-bottom: 0; /* Xóa margin-bottom mặc định */
+    text-align: left;
+    margin-bottom: 0;
 }
 
-/* Ghi đè lại .auth-form-container bên trong cột */
 .profile-column .auth-form-container {
-    box-shadow: none; /* Bỏ bóng/viền mặc định */
+    box-shadow: none;
     border: none;
-    padding: 20px 30px 30px 30px; /* Căn lề cho form */
+    padding: 20px 30px 30px 30px;
 }
 
-/* Style cho các thông báo */
 .profile-column .message {
-    margin: 20px 30px 0 30px; /* Đặt thông báo bên ngoài form */
+    margin: 20px 30px 0 30px;
     border-radius: 5px;
     padding: 10px 15px;
 }
 
-/* Làm cho input đẹp hơn */
 .profile-column .form-input {
-    background-color: #f9f9f9; /* Nền xám rất nhạt cho input */
+    background-color: #f9f9f9;
     border: 1px solid #ddd;
 }
 
 .profile-column .form-input:focus {
-    background-color: var(--color-white); /* Nền trắng khi focus */
-    border-color: var(--color-primary); /* Viền cam khi focus */
-    box-shadow: 0 0 5px rgba(192, 106, 79, 0.3); /* Bóng mờ cam */
+    background-color: var(--color-white);
+    border-color: var(--color-primary);
+    box-shadow: 0 0 5px rgba(192, 106, 79, 0.3);
 }
 
 .profile-column .form-input:disabled {
@@ -498,12 +456,8 @@ h2 {
 }
 
 .profile-column .form-button {
-    margin-top: 10px; /* Khoảng cách cho nút */
+    margin-top: 10px;
 }
-/* ==================================== */
-/* BỔ SUNG CSS CHO NÚT GIỎ HÀNG */
-/* (Dán vào cuối file css/style.css) */
-/* ==================================== */
 
 .menu-item-bottom {
     display: flex;
@@ -513,7 +467,7 @@ h2 {
 }
 
 .menu-item-bottom .price {
-    padding: 0; /* Ghi đè padding cũ */
+    padding: 0;
     font-size: 18px;
     font-weight: bold;
     color: var(--color-primary);
@@ -523,17 +477,17 @@ h2 {
     background-color: var(--color-primary);
     color: var(--color-white);
     border: none;
-    border-radius: 50%; /* Nút tròn */
+    border-radius: 50%;
     width: 30px;
     height: 30px;
     font-size: 20px;
     font-weight: bold;
     cursor: pointer;
-    line-height: 30px; /* Căn chữ '+' vào giữa */
+    line-height: 30px;
     padding: 0;
     transition: background-color 0.3s ease;
 }
 
 .add-to-cart-form button.cta-button-small:hover {
-    background-color: #a85a41; /* Màu đậm hơn */
+    background-color: #a85a41;
 }

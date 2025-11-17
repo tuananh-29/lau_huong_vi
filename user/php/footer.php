@@ -1,4 +1,3 @@
-<!-- Đây là tệp /templates/footer.php -->
 <footer class="footer">
     <div class="container">
         <div class="footer-content">
