@@ -6,20 +6,23 @@ if (isset($_SESSION['user_id'])) {
 }
 include '../config/db.php';
 $message = '';
+
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if (!isset($_POST['captcha']) || strtolower($_POST['captcha']) != strtolower($_SESSION['captcha_code'])) {
         $message = '<div class="message error">Mã Captcha không chính xác!</div>';
     } else {
         $email = mysqli_real_escape_string($conn, $_POST['email']);
         $password_input = $_POST['password'];
+
         $sql = "SELECT ma_nguoi_dung, ho_ten, mat_khau, vai_tro FROM nguoi_dung WHERE email = ?";
         $stmt = $conn->prepare($sql);
         $stmt->bind_param("s", $email);
         $stmt->execute();
         $result = $stmt->get_result();
+
         if ($result->num_rows == 1) {
             $user = $result->fetch_assoc();
-            if (password_verify($password_input, $user['mat_khau'])) {
+            if ($password_input === $user['mat_khau']) {
                 $_SESSION['user_id'] = $user['ma_nguoi_dung'];
                 $_SESSION['full_name'] = $user['ho_ten'];
                 $_SESSION['role'] = $user['vai_tro'];
@@ -31,6 +34,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         } else {
             $message = '<div class="message error">Sai email hoặc mật khẩu!</div>';
         }
+
         $stmt->close();
         $conn->close();
     }
@@ -82,8 +86,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             <p>Đừng lo, tạo mới một tài khoản và bắt đầu trải nghiệm của bạn với nhà hàng chúng tôi</p>
             <a href="register.php" class="cta-button-outline">Đăng ký >></a>
         </aside>
-
     </div>
-
 </body>
 </html>

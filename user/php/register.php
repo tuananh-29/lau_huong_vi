@@ -2,27 +2,29 @@
 session_start();
 include '../config/db.php';
 $message = '';
+
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if (!isset($_POST['captcha']) || strtolower($_POST['captcha']) != strtolower($_SESSION['captcha_code'])) {
         $message = '<div class="message error">Mã Captcha không chính xác!</div>';
     } else {
         $full_name = mysqli_real_escape_string($conn, $_POST['full_name']);
         $email = mysqli_real_escape_string($conn, $_POST['email']);
-        $password = $_POST['password']; 
-        $hashed_password = password_hash($password, PASSWORD_DEFAULT);
+        $password = $_POST['password']; // Lưu trực tiếp, không mã hóa
+
         $sql_check = "SELECT ma_nguoi_dung FROM nguoi_dung WHERE email = ?";
         $stmt_check = $conn->prepare($sql_check);
         $stmt_check->bind_param("s", $email);
         $stmt_check->execute();
         $stmt_check->store_result();
+
         if ($stmt_check->num_rows > 0) {
             $message = '<div class="message error">Email này đã được sử dụng!</div>';
         } else {
             $role = 'khachhang';
             $sql_insert = "INSERT INTO nguoi_dung (ho_ten, email, mat_khau, vai_tro) VALUES (?, ?, ?, ?)";
             $stmt_insert = $conn->prepare($sql_insert);
-            $stmt_insert->bind_param("ssss", $full_name, $email, $hashed_password, $role);
-            
+            $stmt_insert->bind_param("ssss", $full_name, $email, $password, $role);
+
             if ($stmt_insert->execute()) {
                 $message = '<div class="message success">Đăng ký thành công! Bạn có thể đăng nhập ngay.</div>';
                 header("refresh:2;url=login.php");
@@ -31,6 +33,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             }
             $stmt_insert->close();
         }
+
         $stmt_check->close();
         $conn->close();
     }
