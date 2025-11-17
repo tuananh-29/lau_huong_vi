@@ -1,19 +1,13 @@
 <?php
 session_start();
-// SỬA 1: Đường dẫn đúng phải là '../config/db.php'
 include 'config/db.php'; 
-
-// Phải đăng nhập
 if (!isset($_SESSION['user_id'])) {
     header("Location: php/login.php");
     exit();
 }
-
 $user_id = $_SESSION['user_id'];
 $message_info = '';
 $message_pass = '';
-
-// --- XỬ LÝ CẬP NHẬT THÔNG TIN ---
 if (isset($_POST['update_info'])) {
     $ho_ten = mysqli_real_escape_string($conn, $_POST['ho_ten']);
     $so_dien_thoai = mysqli_real_escape_string($conn, $_POST['so_dien_thoai']);
@@ -21,39 +15,30 @@ if (isset($_POST['update_info'])) {
     $sql = "UPDATE nguoi_dung SET ho_ten = ?, so_dien_thoai = ? WHERE ma_nguoi_dung = ?";
     $stmt = $conn->prepare($sql);
     $stmt->bind_param("ssi", $ho_ten, $so_dien_thoai, $user_id);
-    
     if ($stmt->execute()) {
         $message_info = '<div class="message success">Cập nhật thông tin thành công!</div>';
-        $_SESSION['full_name'] = $ho_ten; // Cập nhật lại tên trên session
+        $_SESSION['full_name'] = $ho_ten;
     } else {
         $message_info = '<div class="message error">Lỗi: ' . $conn->error . '</div>';
     }
     $stmt->close();
 }
-
-// --- XỬ LÝ ĐỔI MẬT KHẨU ---
 if (isset($_POST['update_password'])) {
     $pass_old = $_POST['pass_old'];
     $pass_new = $_POST['pass_new'];
     $pass_confirm = $_POST['pass_confirm'];
-
-    // Lấy mk cũ
     $sql_check = "SELECT mat_khau FROM nguoi_dung WHERE ma_nguoi_dung = ?";
     $stmt_check = $conn->prepare($sql_check);
     $stmt_check->bind_param("i", $user_id);
     $stmt_check->execute();
     $result_check = $stmt_check->get_result();
     $user = $result_check->fetch_assoc();
-
     if (password_verify($pass_old, $user['mat_khau'])) {
-        // Mật khẩu cũ đúng
         if ($pass_new == $pass_confirm) {
-            // Mật khẩu mới trùng khớp
             $hashed_password = password_hash($pass_new, PASSWORD_DEFAULT);
             $sql_pass = "UPDATE nguoi_dung SET mat_khau = ? WHERE ma_nguoi_dung = ?";
             $stmt_pass = $conn->prepare($sql_pass);
             $stmt_pass->bind_param("si", $hashed_password, $user_id);
-            
             if ($stmt_pass->execute()) {
                 $message_pass = '<div class="message success">Đổi mật khẩu thành công!</div>';
             } else {
@@ -68,8 +53,6 @@ if (isset($_POST['update_password'])) {
     }
     $stmt_check->close();
 }
-
-// Lấy thông tin user hiện tại để điền vào form
 $sql_user = "SELECT ho_ten, email, so_dien_thoai FROM nguoi_dung WHERE ma_nguoi_dung = ?";
 $stmt_user = $conn->prepare($sql_user);
 $stmt_user->bind_param("i", $user_id);
@@ -115,7 +98,6 @@ $conn->close();
                         </form>
                     </div>
                 </div>
-
                 <div class="profile-column">
                     <h2>Đổi Mật Khẩu</h2>
                     <?php echo $message_pass; ?>
@@ -137,7 +119,6 @@ $conn->close();
                         </form>
                     </div>
                 </div>
-
             </div>
         </section>
     </main>
