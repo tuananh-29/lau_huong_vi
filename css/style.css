@@ -500,3 +500,40 @@ h2 {
 .profile-column .form-button {
     margin-top: 10px; /* Khoảng cách cho nút */
 }
+/* ==================================== */
+/* BỔ SUNG CSS CHO NÚT GIỎ HÀNG */
+/* (Dán vào cuối file css/style.css) */
+/* ==================================== */
+
+.menu-item-bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 15px 20px 15px;
+}
+
+.menu-item-bottom .price {
+    padding: 0; /* Ghi đè padding cũ */
+    font-size: 18px;
+    font-weight: bold;
+    color: var(--color-primary);
+}
+
+.add-to-cart-form button.cta-button-small {
+    background-color: var(--color-primary);
+    color: var(--color-white);
+    border: none;
+    border-radius: 50%; /* Nút tròn */
+    width: 30px;
+    height: 30px;
+    font-size: 20px;
+    font-weight: bold;
+    cursor: pointer;
+    line-height: 30px; /* Căn chữ '+' vào giữa */
+    padding: 0;
+    transition: background-color 0.3s ease;
+}
+
+.add-to-cart-form button.cta-button-small:hover {
+    background-color: #a85a41; /* Màu đậm hơn */
+}

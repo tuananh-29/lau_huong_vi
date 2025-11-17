@@ -1,0 +1,102 @@
+/* ==================================== */
+/* CSS CHO TRANG GIỎ HÀNG (css/cart.css) */
+/* ==================================== */
+
+.cart-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 30px;
+    background-color: var(--color-white);
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    overflow: hidden;
+}
+
+.cart-table th, 
+.cart-table td {
+    padding: 15px 20px;
+    text-align: left;
+    border-bottom: 1px solid #eee;
+}
+
+.cart-table th {
+    background-color: #fcfcfc;
+    font-size: 14px;
+    color: var(--color-charcoal);
+    text-transform: uppercase;
+}
+
+.cart-table td {
+    vertical-align: middle;
+}
+
+/* Cột hình ảnh */
+.cart-table td:first-child {
+    width: 100px;
+}
+
+.cart-table img {
+    width: 80px;
+    height: 80px;
+    object-fit: cover;
+    border-radius: 5px;
+    border: 1px solid #eee;
+}
+
+/* Cột số lượng */
+.cart-update-form {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.cart-update-form .form-input {
+    width: 70px;
+    padding: 8px 10px;
+    text-align: center;
+}
+
+.cart-update-form .cta-button-secondary {
+    padding: 8px 12px;
+    font-size: 14px;
+}
+
+/* Cột xóa */
+.cart-table td:last-child {
+    text-align: center;
+    width: 60px;
+}
+.cart-table td:last-child .cta-button {
+    width: 35px;
+    height: 35px;
+    padding: 0;
+    line-height: 35px;
+    border-radius: 50%;
+}
+
+
+/* Tóm tắt giỏ hàng */
+.cart-summary {
+    text-align: right;
+    background-color: var(--color-white);
+    padding: 20px 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+.cart-summary h3 {
+    font-size: 22px;
+    color: var(--color-charcoal);
+    margin-bottom: 20px;
+}
+
+.cart-summary h3 .price {
+    color: var(--color-primary);
+    font-size: 24px;
+    margin-left: 15px;
+}
+
+.cart-summary .cta-button {
+    font-size: 16px;
+    padding: 12px 25px;
+}
