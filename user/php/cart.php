@@ -1,7 +1,7 @@
 <?php
 session_start();
-include 'config/db.php'; 
-include 'php/header.php';
+include '../../config/db.php'; 
+include 'header.php';
 $cart_products = array();
 $total_price = 0;
 if (!empty($_SESSION['cart'])) {
@@ -27,8 +27,8 @@ $conn->close();
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Giỏ Hàng - Lẩu Hương Vị</title>
-    <link rel="stylesheet" href="css/style.css"> 
-    <link rel="stylesheet" href="css/cart.css">
+    <link rel="stylesheet" href="../css/style.css"> 
+    <link rel="stylesheet" href="../css/cart.css">
 </head>
 <body>
     <main>
@@ -93,6 +93,6 @@ $conn->close();
             </div>
         </section>
     </main>
-    <?php include 'php/footer.php'; ?>
+    <?php include 'footer.php'; ?>
 </body>
 </html>

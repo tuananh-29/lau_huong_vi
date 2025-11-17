@@ -29,7 +29,7 @@
             </ul>
         </nav>
         <div class="header-action">
-            <a href="cart.php" class="profile-link" title="Giỏ hàng" style="font-size: 20px; text-decoration: none;">
+            <a href="php/cart.php" class="profile-link" title="Giỏ hàng" style="font-size: 20px; text-decoration: none;">
                 🛒<span class="cart-count" style="font-size: 14px; font-weight: bold; color: var(--color-primary);">
                     (<?php echo $cart_item_count; ?>)
                 </span>
