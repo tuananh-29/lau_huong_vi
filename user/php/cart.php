@@ -36,7 +36,7 @@ $conn->close();
             <div class="container">
                 <h2>Giỏ Hàng Của Bạn</h2>
                 <?php if (empty($cart_products)): ?>
-                    <p style="text-align: center;">Giỏ hàng của bạn đang trống. <a href="menu.php">Quay lại thực đơn</a></p>
+                    <p style="text-align: center;">Giỏ hàng của bạn đang trống. <a href="../menu.php">Quay lại thực đơn</a></p>
                 <?php else: ?>
                     <table class="cart-table">
                         <thead>
