@@ -1,12 +1,12 @@
 <?php
 session_start();
-include 'config/db.php';
+include '../../config/db.php';
 if (!isset($_SESSION['user_id'])) {
     header("Location: login.php");
     exit();
 }
 if (empty($_SESSION['cart'])) {
-    header("Location: menu.php");
+    header("Location: ../menu.php");
     exit();
 }
 $message = '';
@@ -74,7 +74,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Thanh Toán - Lẩu Hương Vị</title>
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="../css/style.css">
 </head>
 <body>
     <?php include 'header.php'; ?>
