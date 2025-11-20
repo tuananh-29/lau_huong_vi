@@ -35,7 +35,6 @@ $result_stock_in = $conn->query(
 
             <div class="content-box">
                 <a href="#" class="form-button" style="text-decoration: none; display: inline-block;">+ Tạo Phiếu Nhập Mới</a>
-                <p style="margin-top: 10px;">(Chức năng "Tạo Phiếu Nhập" rất phức tạp và cần được xây dựng riêng, bao gồm JavaScript để thêm/xóa dòng chi tiết.)</p>
             </div>
 
             <div class="content-box">

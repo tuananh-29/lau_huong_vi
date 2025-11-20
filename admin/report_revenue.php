@@ -62,11 +62,7 @@ $revenue_month = $result_month->fetch_assoc()['total'];
             </div>
 
             <div class="content-box" style="margin-top: 20px;">
-                <h2>Biểu Đồ Doanh Thu (Chức năng nâng cao)</h2>
-                <p>Để vẽ biểu đồ, bạn cần dùng PHP để truy vấn CSDL (SUM(tong_tien) GROUP BY DATE(ngay_dat)) dựa trên ngày tháng ở trên, sau đó truyền dữ liệu vào JavaScript (Chart.js) để vẽ.</p>
-                <canvas id="revenueChart"></canvas>
-            </div>
-
+                <h2>Biểu Đồ Doanh Thu</h2>
         </main>
     </div>
 
