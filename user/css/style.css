@@ -34,6 +34,9 @@ main {
     background-color: var(--color-white);
     border-bottom: 2px solid var(--color-primary);
     padding: 20px 0;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
 }
 
 .header .container {

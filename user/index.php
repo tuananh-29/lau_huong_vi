@@ -1,3 +1,4 @@
+<?php include '../config/db.php'; ?>
 <!DOCTYPE html>
 <html lang="vi">
 <head>
@@ -13,13 +14,10 @@
             <div class="slider-wrapper">
                 <div class="slider">
                     <div class="slide">
-                        <img src="https://placehold.co/1200x400/C06A4F/F7F3E8?text=Lẩu+Thái+Tomyum" alt="Banner Lẩu Thái">
+                        <img src="../images/banner1.png" alt="#">
                     </div>
                     <div class="slide">
-                        <img src="https://placehold.co/1200x400/3D3532/F7F3E8?text=Lẩu+Bò+Sa+Tế" alt="Banner Lẩu Bò">
-                    </div>
-                    <div class="slide">
-                        <img src="https://placehold.co/1200x400/F7F3E8/3D3532?text=Combo+Hải+Sản+Tươi" alt="Banner Hải Sản">
+                        <img src="../images/banner2.png" alt="#">
                     </div>
                 </div>
                 <button class="slider-btn" id="prevBtn">&lt;</button>
@@ -30,31 +28,34 @@
             <div class="container">
                 <h2>Thực Đơn Nổi Bật</h2>
                 <div class="menu-grid">
-                    <div class="menu-item">
-                        <a href="menu.php">
-                            <img src="https://placehold.co/300x200/C06A4F/FFFFFF?text=Lẩu+Bò" alt="Lẩu Bò Sa Tế">
-                            <h3>Lẩu Bò Sa Tế</h3>
-                        </a>
-                        <p>Nước lẩu đậm đà vị sa tế cay nồng.</p>
-                        <span class="price">250.000 VNĐ</span>
-                    </div>
-                    <div class="menu-item">
-                        <a href="menu.php">
-                            <img src="https://placehold.co/300x200/C06A4F/FFFFFF?text=Lẩu+Hải+Sản" alt="Lẩu Hải Sản">
-                            <h3>Lẩu Hải Sản Tươi</h3>
-                        </a>
-                        <p>Nước lẩu chua cay với hải sản tươi sống.</p>
-                        <span class="price">300.000 VNĐ</span>
-                    </div>
-                    <div class="menu-item">
-                        <a href="menu.php">
-                            <img src="https://placehold.co/300x200/C06A4F/FFFFFF?text=Lẩu+Nấm" alt="Lẩu Nấm">
-                            <h3>Lẩu Nấm</h3>
-                        </a>
-                        <p>Lẩu nấm thanh ngọt, tốt cho sức khỏe.</p>
-                        <span class="price">230.000 VNĐ</span>
-                    </div>
-                </div>
+            <?php
+            $sql = "SELECT * FROM mon_an WHERE ma_mon_an IN (1, 5, 10)";
+            $result = $conn->query($sql);
+            if ($result && $result->num_rows > 0) {
+                while ($row = $result->fetch_assoc()) {                   
+                    $img_path = "../images/" . $row['anh'];
+            ?>
+            <div class="menu-item">
+                <a href="menu.php">
+                <img src="<?php echo $img_path; ?>" alt="<?php echo htmlspecialchars($row['ten_mon_an']); ?>" style="width: 100%; height: 200px; object-fit: cover;">
+                <h3><?php echo htmlspecialchars($row['ten_mon_an']); ?></h3>
+            </a>                   
+            <p>
+            <?php 
+                $mo_ta = htmlspecialchars($row['mo_ta']);
+                if (strlen($mo_ta) > 50) echo substr($mo_ta, 0, 50) . '...';
+                else echo $mo_ta;
+            ?>
+            </p>                   
+                <span class="price"><?php echo number_format($row['gia'], 0, ',', '.'); ?> VNĐ</span>
+            </div>
+            <?php
+                } 
+                } else {
+                    echo "<p style='text-align:center; width:100%'>Chưa có món ăn nổi bật nào.</p>";
+                }
+            ?>
+            </div>
                 <div style="text-align: center; margin-top: 30px;">
                     <a href="menu.php" class="cta-button">Xem Toàn Bộ Thực Đơn</a>
                 </div>

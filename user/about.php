@@ -15,7 +15,6 @@
             <div class="container">
                 <h2>Về Lẩu Hương Vị</h2>
                 <p>Nhà hàng Lẩu Hương Vị mang đến trải nghiệm ẩm thực ấm cúng với những loại nước lẩu đặc trưng, kết hợp cùng nguyên liệu tươi ngon nhất...</p>
-                <p style="text-align: center; margin-top: 20px;">(Nội dung giới thiệu chi tiết sẽ ở đây)</p>
             </div>
         </section>
     </main>

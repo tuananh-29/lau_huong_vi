@@ -61,9 +61,18 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $conn->rollback();
         $message = '<div class="message error">Đã có lỗi xảy ra khi đặt hàng: ' . $e->getMessage() . '</div>';
     }
-    $stmt_products->close();
-    $stmt_order->close();
-    $stmt_detail->close();
+ if (isset($stmt_products) && $stmt_products) {
+        $stmt_products->close();
+    }
+    
+    if (isset($stmt_order) && $stmt_order) {
+        $stmt_order->close();
+    }
+    
+    if (isset($stmt_detail) && $stmt_detail) {
+        $stmt_detail->close();
+    }
+    
     $conn->close();
 }
 ?>
