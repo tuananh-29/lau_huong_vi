@@ -20,7 +20,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $notes = mysqli_real_escape_string($conn, $_POST['notes']);
     $status = 'cho_xac_nhan';
     $user_id = $_SESSION['user_id'];
-    $sql = "INSERT INTO dat_ban (ma_nguoi_dung, te_nguoi_dat, sdt_nguoi_dat, ngay_den, gio_den, so_luong_khach, ghi_chu, trang_thai) 
+    $sql = "INSERT INTO dat_ban (ma_nguoi_dung, ten_nguoi_dat, sdt_nguoi_dat, ngay_den, gio_den, so_luong_khach, ghi_chu, trang_thai) 
             VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
     $stmt = $conn->prepare($sql);
     $stmt->bind_param("isssisss", $user_id, $customer_name, $customer_phone, $res_date, $res_time, $guests, $notes, $status);

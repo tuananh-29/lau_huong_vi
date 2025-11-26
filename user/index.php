@@ -26,10 +26,10 @@
         </section>
         <section id="menu-preview" class="menu-preview">
             <div class="container">
-                <h2>Thực Đơn Nổi Bật</h2>
+                <h2>GỢI Ý MÓN ĂN</h2>
                 <div class="menu-grid">
             <?php
-            $sql = "SELECT * FROM mon_an WHERE ma_mon_an IN (1, 5, 10)";
+            $sql = "SELECT * FROM mon_an ORDER BY RAND() LIMIT 3";
             $result = $conn->query($sql);
             if ($result && $result->num_rows > 0) {
                 while ($row = $result->fetch_assoc()) {                   

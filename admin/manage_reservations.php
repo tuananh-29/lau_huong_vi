@@ -77,7 +77,7 @@ $result_bookings = $conn->query("SELECT * FROM dat_ban
                             <?php while($row = $result_bookings->fetch_assoc()): ?>
                                 <tr>
                                     <td><?php echo $row['ma_dat_ban']; ?></td>
-                                    <td><?php echo htmlspecialchars($row['te_nguoi_dat']); ?></td>
+                                    <td><?php echo htmlspecialchars($row['ten_nguoi_dat']); ?></td>
                                     <td><?php echo htmlspecialchars($row['sdt_nguoi_dat']); ?></td>
                                     <td><?php echo date('d/m/Y', strtotime($row['ngay_den'])); ?> lúc <?php echo date('H:i', strtotime($row['gio_den'])); ?></td>
                                     <td><?php echo $row['so_luong_khach']; ?></td>

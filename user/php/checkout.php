@@ -38,7 +38,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
     $conn->begin_transaction();
     try {
-        $sql_order = "INSERT INTO don_hang (ma_nguoi_dung, ten_nguoi_nhan, sdt_nguoi_nhan, dia_chi_giao_hang, tong_tien, ghi_chu, tran_thai) 
+        $sql_order = "INSERT INTO don_hang (ma_nguoi_dung, ten_nguoi_nhan, sdt_nguoi_nhan, dia_chi_giao_hang, tong_tien, ghi_chu, trang_thai) 
                       VALUES (?, ?, ?, ?, ?, ?, 'cho_xac_nhan')";
         $stmt_order = $conn->prepare($sql_order);
         $stmt_order->bind_param("isssis", $user_id, $ten_nguoi_nhan, $sdt_nguoi_nhan, $dia_chi_giao_hang, $tong_tien, $ghi_chu);
@@ -56,7 +56,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $conn->commit();
         unset($_SESSION['cart']);
         $message = '<div class="message success">Đặt hàng thành công! Cảm ơn bạn đã mua hàng.</div>';
-        header("refresh:3;url=index.php");
+        header("refresh:3;url=../index.php");
     } catch (Exception $e) {
         $conn->rollback();
         $message = '<div class="message error">Đã có lỗi xảy ra khi đặt hàng: ' . $e->getMessage() . '</div>';

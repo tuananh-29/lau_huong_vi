@@ -47,5 +47,34 @@ document.addEventListener('DOMContentLoaded', function () {
                 }
             });
         });
-    } 
+    }
+    const cartForms = document.querySelectorAll('.ajax-cart-form');
+    
+    cartForms.forEach(form => {
+        form.addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            const formData = new FormData(this);
+            formData.append('ajax', '1');P
+            fetch('php/cart_action.php', {
+                method: 'POST',
+                body: formData
+            })
+            .then(response => response.json()) 
+            .then(data => {
+                if (data.status === 'success') {
+                    const cartCountElement = document.querySelector('.cart-count');
+                    if (cartCountElement) {
+                        cartCountElement.textContent = `(${data.total_items})`;
+                    }
+                    alert("Đã thêm món vào giỏ hàng thành công!"); 
+                } else {
+                    alert("Có lỗi xảy ra: " + data.message);
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+            });
+        });
+    }); 
 });

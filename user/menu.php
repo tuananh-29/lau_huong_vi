@@ -7,7 +7,7 @@ $category_id = isset($_GET['category']) && is_numeric($_GET['category'])
     : 0;
 $search_term = isset($_GET['search']) ? $_GET['search'] : '';
 $page = isset($_GET['page']) && is_numeric($_GET['page']) ? (int)$_GET['page'] : 1;
-$items_per_page = 9;
+$items_per_page = 6;
 $offset = ($page - 1) * $items_per_page;
 $sql_where = " WHERE trang_thai = 'con_hang' ";
 $params = [];
@@ -98,13 +98,12 @@ $result = $stmt->get_result();
     <h2 style="text-align:center;margin-bottom:40px;">Vui Lòng Chọn Loại Món Ăn</h2>
     <div class="category-choice-container">
         <a href="menu.php?category=1" class="category-choice">
-            <img src="images/placeholder_lau.jpg"
-                 onerror="this.src='https://placehold.co/320x320/c06a4f/fff?text=L%E1%BA%A9u';">
+            <img src="../images/lau.webp">
             <span>Lẩu</span>
         </a>
+
         <a href="menu.php?category=2" class="category-choice">
-            <img src="images/placeholder_monle.jpg"
-                 onerror="this.src='https://placehold.co/320x320/333/fff?text=M%C3%B3n+L%E1%BA%BB';">
+            <img src="../images/mon_le.webp">
             <span>Món lẻ</span>
         </a>
     </div>
@@ -138,7 +137,7 @@ $result = $stmt->get_result();
                 echo '  <p>' . $row["mo_ta"] . '</p>';
                 echo '<div class="menu-item-bottom">';
                 echo '    <span class="price">' . number_format($row["gia"], 0, ',', '.') . ' VNĐ</span>';
-                echo '    <form action="php/cart_action.php" method="POST">';
+                echo '    <form action="php/cart_action.php" method="POST" class="ajax-cart-form">';
                 echo '         <input type="hidden" name="product_id" value="' . $row["ma_mon_an"] . '">';
                 echo '         <input type="hidden" name="quantity" value="1">';
                 echo '         <button class="cta-button-small" type="submit" name="add_to_cart">+</button>';

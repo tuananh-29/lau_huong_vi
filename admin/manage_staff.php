@@ -127,7 +127,6 @@ $result_users = $conn->query("SELECT ma_nguoi_dung, ho_ten, email, vai_tro, ngay
                             <label>Vai Trò</label>
                             <select name="vai_tro" class="form-select">
                                 <option value="nhanvien" <?php echo ($edit_mode && $edit_user['vai_tro'] == 'nhanvien') ? 'selected' : ''; ?>>Nhân viên</option>
-                                <option value="admin" <?php echo ($edit_mode && $edit_user['vai_tro'] == 'admin') ? 'selected' : ''; ?>>Admin</option>
                             </select>
                         </div>
                         <div class="form-group">
