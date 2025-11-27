@@ -55,7 +55,7 @@ $conn->close();
                                 $quantity = $_SESSION['cart'][$product_id];
                                 $subtotal = $product['gia'] * $quantity;
                                 $total_price += $subtotal;
-                                $image_path = '../' . htmlspecialchars($product["anh"]);
+                                $image_path = '../../images' . htmlspecialchars($product["anh"]);
                                 $placeholder_image = 'https://placehold.co/100x100/eee/ccc?text=No+Image';
                                 ?>
                                 <tr>

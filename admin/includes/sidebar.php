@@ -70,14 +70,6 @@ $current_page = basename($_SERVER['SCRIPT_NAME']);
                     <i class="fas fa-user-shield"></i> Quản lý Nhân Sự
                 </a>
             </li>
-            
-            <li><hr style="border-color: #34495e;"></li>
-
-            <li>
-                <a href="report_revenue.php" class="<?php echo ($current_page == 'report_revenue.php') ? 'active' : ''; ?>">
-                    <i class="fas fa-chart-line"></i> Báo cáo Doanh Thu
-                </a>
-            </li>
         </ul>
     </nav>
 </aside>

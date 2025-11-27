@@ -101,7 +101,6 @@ $result_users = $conn->query("SELECT ma_nguoi_dung, ho_ten, email, vai_tro, ngay
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Quản Lý Nhân Sự</title>
     <link rel="stylesheet" href="css/admin_style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 </head>
 <body>
     <?php include 'includes/sidebar.php'; ?>

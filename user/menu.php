@@ -54,41 +54,6 @@ $result = $stmt->get_result();
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Thực Đơn - Lẩu Hương Vị</title>
     <link rel="stylesheet" href="css/style.css">
-    <style>
-        .category-choice-container {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 30px;
-            justify-content: center;
-            padding: 50px 0;
-        }
-        .category-choice {
-            width: 320px;
-            height: 320px;
-            overflow: hidden;
-            border-radius: 10px;
-            position: relative;
-            text-decoration: none;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.15);
-            transition: 0.3s;
-        }
-        .category-choice:hover { transform: translateY(-5px); }
-        .category-choice img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-        .category-choice span {
-            position: absolute;
-            bottom: 0;
-            width: 100%;
-            padding: 20px;
-            font-size: 24px;
-            color: white;
-            text-align: center;
-            background: linear-gradient(to top, rgba(0,0,0,0.7), transparent);
-        }
-    </style>
 </head>
 <body>
 <main>

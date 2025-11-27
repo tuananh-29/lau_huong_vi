@@ -8,7 +8,6 @@ include 'admin_auth.php';
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Quản Lý Xuất Kho</title>
     <link rel="stylesheet" href="css/admin_style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 </head>
 <body>
     
@@ -19,10 +18,8 @@ include 'admin_auth.php';
 
         <main class="main-content">
             <h1>Quản Lý Xuất Kho</h1>
-            
             <div class="content-box">
             </div>
-
         </main>
     </div>
 

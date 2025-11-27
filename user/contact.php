@@ -12,8 +12,8 @@
     <main>
         <section class="contact-page">
             <div class="container">
-                <h2>Liên Hệ & Đặt Bàn</h2>
-                 <p style="text-align: center; max-width: 600px; margin: 0 auto 30px auto;">Bạn có thể đặt bàn qua Form bên dưới hoặc gọi trực tiếp vào Hotline: 0909.123.456</p>
+                <h2>Liên Hệ </h2>
+                 <p style="text-align: center; max-width: 600px; margin: 0 auto 30px auto;">Bạn có thể gọi trực tiếp vào Hotline: 0909.123.456</p>
             </div>
         </section>
     </main>
